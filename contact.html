@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Contact Me</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Let's Connect!</h2>
+      <form id="contactForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" required><br><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" rows="5" required></textarea><br><br>
+
+        <button type="submit">Send Message</button>
+        <p id="formMsg"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 My Blog</p>
+    <button id="themeToggle">Toggle Theme</button>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const formMsg = document.getElementById('formMsg');
+      if (name && email.includes('@') && message.length > 5) {
+        formMsg.textContent = "Thanks! Your message has been sent.";
+        formMsg.style.color = "green";
+        this.reset();
+      } else {
+        formMsg.textContent = "Please fill out all fields correctly.";
+        formMsg.style.color = "red";
+      }
+    });
+  </script>
+</body>
+</html>
